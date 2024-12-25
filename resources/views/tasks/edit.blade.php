@@ -19,7 +19,7 @@
             </div>
             
             <div class="form-control my-4">
-                <label for="label-text" class="label">
+                <label for="status" class="label">
                     <span class="label-text">進捗状況：</span>
                 </label>
                 <input type="text" name="status" value="{{ $task->status }}" class="input input-bordered w-full">

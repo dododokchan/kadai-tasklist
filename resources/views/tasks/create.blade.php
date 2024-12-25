@@ -20,8 +20,8 @@
                 <div class="form-control my-4">
                     <label for="status" class="label">
                         <span class="label-text">進捗状況：</span>
-                        <input type="text" name="status" class="input input-bordered w-full">
-                    </label>
+                        </label>
+                    <input type="text" name="status" class="input input-bordered w-full">
                 </div>
                 <button type="submit" class="btn btn-primary btn-outline">登録</button>
         </form>
