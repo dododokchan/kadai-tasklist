@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TasksController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Controller ( TasksController@index ) を経由してdashboardを表示するようにしてる
+Route::get('/', [TasksController::class, 'index']);
+//Route::get('/', function() { return view('dashboard'); });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [TasksController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //Route::get('/', [TasksController::class, 'index']);
+    Route::resource('tasks', TasksController::class);
+    
+    //Route::resource('tasks', TasksController::class, ['only' => ['store', 'destroy']]);
 });
 
-require __DIR__.'/auth.php';
+//Route::get('tasks/{id}', [TasksController::class, 'show']);
+//Route::post('tasks', [TasksController::class, 'store']);
+//Route::put('tasks/{id}', [TasksController::class, 'update']);
+//Route::delete('tasks/{id}', [TasksController::class, 'destroy']);
+
+//Rote::get('tasks', [TasksController::class, 'index'])->name('task.index');
+//Route::get('tasks/create', [TasksControler:class, 'create'])->name('task.create');
+//Route::get('tasks/{id}/edit', [TasksController::class, 'edit'])->name('task.edit');
+require __DIR__.'/auth.php'; //auth.phpの内容を取得する記述

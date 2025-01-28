@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @include('tasks.users')
+  
     <div class="prose ml-4">
         <h2 class="text-lg">タスク一覧</h2>
     </div>
@@ -26,7 +27,7 @@
             </tbody>
         </table>
     @endif
-    
+
     {{-- タスク作成ページへのリンク --}}
     <a class="btn btn-primary" href="{{ route('tasks.create') }}">新規タスクの追加</a>
     
