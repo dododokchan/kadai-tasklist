@@ -19,8 +19,11 @@ class TasksController extends Controller
             $tasks = $user->tasks()->orderBy('id', 'desc')->paginate(25);
         
                         //タスク一覧取得
-                        $tasks = Task::all();
+                        //$tasks = Task::all();
+                        //$tasks = Auth::user()->tasks;
         
+                    //$tasks = Task::where('user_id', $task->id)->get;
+                        
                         //タスク一覧ビューで表示（View側で呼び出すtasksに、$tasksを渡す）
                         return view('tasks.index', ['tasks' => $tasks, ]);
             $data = [
